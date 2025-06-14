@@ -1,0 +1,30 @@
+{
+  "name": "brave-project-deployer",
+  "version": "0.0.1",
+  "description": "",
+  "types": "build/types.d.ts",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run clear-build && tsup --watch",
+    "lint": "eslint src/**/*.ts* --fix",
+    "clear-build": "rimraf -rf ./build",
+    "compile": "tsup",
+    "build": "npm run clear-build && npm run compile"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bin": {
+    "brave-project-deployer": "build/index.js"
+  },
+  "dependencies": {
+    "@vortecx/cli-forger": "0.1.0"
+  },
+  "devDependencies": {
+    "@swc/core": "1.12.1",
+    "@types/node": "24.0.1",
+    "@vortecx/eslint-config": "0.0.5",
+    "tsup": "8.5.0",
+    "typescript": "5.8.3"
+  }
+}
