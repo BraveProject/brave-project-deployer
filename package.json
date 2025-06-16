@@ -1,6 +1,6 @@
 {
   "name": "brave-project-deployer",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "",
   "types": "build/types.d.ts",
   "main": "index.js",
@@ -15,14 +15,16 @@
   "author": "",
   "license": "MIT",
   "bin": {
-    "brave-project-deployer": "build/index.js"
+    "brave": "build/index.js"
   },
   "dependencies": {
-    "@vortecx/cli-forger": "0.1.0"
+    "@vortecx/cli-forger": "0.1.3",
+    "semver": "7.7.2"
   },
   "devDependencies": {
     "@swc/core": "1.12.1",
     "@types/node": "24.0.1",
+    "@types/semver": "7.7.0",
     "@vortecx/eslint-config": "0.0.5",
     "tsup": "8.5.0",
     "typescript": "5.8.3"

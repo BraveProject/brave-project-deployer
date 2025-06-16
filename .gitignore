@@ -32,3 +32,4 @@ jspm_packages/
 .yarn/install-state.gz
 .pnp.*
 bun.*
+/test

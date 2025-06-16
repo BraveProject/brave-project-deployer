@@ -1,38 +1,43 @@
-import { Command, Option, CliForger } from "@vortecx/cli-forger";
-import { version } from "../package.json";
+import { CliForger } from '@vortecx/cli-forger'
+import { version } from '../package.json'
+import { extensions, Extensions } from './extensions'
+import { moveBackupToProdCommand } from './commands/move-backup-to-prod'
+import { moveStagingToProdCommand } from './commands/move-staging-to-prod'
+import { moveTempToProdCommand } from './commands/move-temp-to-prod'
+import { listBackupVersionsCommand } from './commands/list-backup-versions'
+import { listProdVersionsCommand } from './commands/list-prod-versions'
+import { listStagingVersionsCommand } from './commands/list-staging-versions'
+import { listTempVersionsCommand } from './commands/list-temp-versions'
+import { listVersionsCommand } from './commands/list-versions'
+import { moveStagingToBackupCommand } from './commands/move-staging-to-backup'
+import { moveProdToBackupCommand } from './commands/move-prod-to-backup'
+import { deployProductionCommand } from './commands/deploy-production'
+import { moveBackupToStagingCommand } from './commands/move-backup-to-staging'
+import { moveTempToStagingCommand } from './commands/move-temp-to-staging'
+import { deployStagingCommand } from './commands/deploy-staging'
 
-const cli = new CliForger({
-  name: "brave-project-deployer",
-  version: version,
-  description: "A description",
-});
+const cli = new CliForger<Extensions>({
+  name: 'brave',
+  version,
+  description: 'Application to deploy brave projetct',
+})
 
-const sayHelloCommand = Command.create<{ for: string }>({
-  name: "Say hello",
-  description: "Say hello for world or anyone",
-  aliases: ["sh"],
-  options: [
-    Option.create({
-      name: "For anyone",
-      description: "Define woo receive hello",
-      required: false,
-      long: "for",
-      short: "f",
-    }),
-  ],
-});
+cli.addExtensions(extensions)
 
-sayHelloCommand.addHandler(({ args, workers }) => {
-  const { for: forAnyone } = args;
+cli.addCommand(listBackupVersionsCommand)
+cli.addCommand(listProdVersionsCommand)
+cli.addCommand(listStagingVersionsCommand)
+cli.addCommand(listTempVersionsCommand)
+cli.addCommand(listVersionsCommand)
+cli.addCommand(moveBackupToProdCommand)
+cli.addCommand(moveStagingToProdCommand)
+cli.addCommand(moveTempToProdCommand)
+cli.addCommand(moveStagingToBackupCommand)
+cli.addCommand(moveProdToBackupCommand)
+cli.addCommand(moveBackupToStagingCommand)
+cli.addCommand(moveTempToStagingCommand)
 
-  if (forAnyone) {
-    workers.logger.info(`Hello ${forAnyone}!`);
-    return;
-  }
+cli.addCommand(deployProductionCommand)
+cli.addCommand(deployStagingCommand)
 
-  workers.logger.info("Hello world!");
-});
-
-cli.addDefaultCommand(sayHelloCommand);
-
-export default cli;
+export default cli
