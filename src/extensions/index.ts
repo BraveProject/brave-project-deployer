@@ -7,6 +7,7 @@ import { getCurrentProdFolder } from './get-current-prod-folder'
 import { getDeployedProdFolder } from './get-deployed-prod-folder'
 import { getCurrentWaitFolder } from './get-current-wait-folder'
 import { getDeployedStagingFolder } from './get-deployed-staging-folder'
+import { listVersions } from './list-versions'
 
 export const extensions = {
   getDeployFolder,
@@ -17,6 +18,7 @@ export const extensions = {
   getCurrentProdFolder,
   getDeployedProdFolder,
   getCurrentWaitFolder,
+  listVersions,
 }
 
 export type Extensions = WorkersExtensions<typeof extensions>
