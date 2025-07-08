@@ -12,6 +12,8 @@ import { moveBackupToStagingCommand } from './commands/move-backup-to-staging'
 import { moveTempToStagingCommand } from './commands/move-temp-to-staging'
 import { deployStagingCommand } from './commands/deploy-staging'
 import { renameVersionCommand } from './commands/rename-version'
+import { redeployStagingCommand } from './commands/redeploy-staging'
+import { redeployProdCommand } from './commands/redeploy-prod'
 
 const cli = new CliForger<Extensions>({
   name: 'brave',
@@ -30,6 +32,8 @@ cli.addCommand(moveProdToBackupCommand)
 cli.addCommand(moveBackupToStagingCommand)
 cli.addCommand(moveTempToStagingCommand)
 cli.addCommand(renameVersionCommand)
+cli.addCommand(redeployStagingCommand)
+cli.addCommand(redeployProdCommand)
 
 cli.addCommand(deployProductionCommand)
 cli.addCommand(deployStagingCommand)
